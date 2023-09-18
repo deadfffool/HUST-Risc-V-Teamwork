@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:C:/Users/Miles/Desktop/FPGA/project_1.srcs/constrs_1/imports/risc-V/Nexys4DDR_Master.xdc rfile:../../../project_1.srcs/constrs_1/imports/risc-V/Nexys4DDR_Master.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Users/Miles/Desktop/Risc-V-Teamwork/project_1.srcs/constrs_1/imports/risc-V/Nexys4DDR_Master.xdc rfile:../../../project_1.srcs/constrs_1/imports/risc-V/Nexys4DDR_Master.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets CENTER_IBUF]
 set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]
