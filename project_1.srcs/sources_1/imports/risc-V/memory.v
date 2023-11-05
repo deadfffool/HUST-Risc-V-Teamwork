@@ -74,7 +74,7 @@ module ROM(Addr, Dout);
     reg [31:0] rom[1023:0];   // Read-only memory, size is 1024 32-bit data
 
     initial begin
-        $readmemh("C:\\Users\\Miles\\Desktop\\Risc-V-Teamwork\\risc-v-single.txt", rom);    // Read initialization data from a file to fill the read-only memory
+        $readmemh("C:\\Users\\Miles\\Desktop\\HUST-Risc-V-Teamwork\\LUI.txt", rom);    // Read initialization data from a file to fill the read-only memory
     end
     
     assign Dout = rom[Addr];

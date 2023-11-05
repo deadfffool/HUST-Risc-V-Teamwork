@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "C:/Users/Miles/Desktop/Risc-V-Teamwork/project_1.runs/impl_1/CPU_RISCV.tcl"
+  variable script "C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.runs/impl_1/CPU_RISCV.tcl"
   variable category "vivado_impl"
 }
 
@@ -123,22 +123,23 @@ set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 4
-  set_param runs.launchOptions { -jobs 8  }
+  set_param xicom.use_bs_reader 1
+  set_param runs.launchOptions { -jobs 16  }
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a100tcsg324-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir C:/Users/Miles/Desktop/Risc-V-Teamwork/project_1.cache/wt [current_project]
-  set_property parent.project_path C:/Users/Miles/Desktop/Risc-V-Teamwork/project_1.xpr [current_project]
-  set_property ip_output_repo C:/Users/Miles/Desktop/Risc-V-Teamwork/project_1.cache/ip [current_project]
+  set_property webtalk.parent_dir C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.cache/wt [current_project]
+  set_property parent.project_path C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.xpr [current_project]
+  set_property ip_output_repo C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet C:/Users/Miles/Desktop/Risc-V-Teamwork/project_1.runs/synth_1/CPU_RISCV.dcp
+  add_files -quiet C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.runs/synth_1/CPU_RISCV.dcp
 OPTRACE "read constraints: implementation" START { }
-  read_xdc C:/Users/Miles/Desktop/Risc-V-Teamwork/project_1.srcs/constrs_1/imports/risc-V/Nexys4DDR_Master.xdc
+  read_xdc C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.srcs/constrs_1/imports/risc-V/Nexys4DDR_Master.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

@@ -20,13 +20,13 @@ module CPU_RISCV(
     wire [31:0] PC_in, PC_out, PC_add_4, IR;
     wire CLK_N, PC_en, CLK_1, CLK_2, CLK_3, CLK_4;
     wire [4:0] Funct, OpCode; // Signals to the input hard-wired controller
-    wire MemtoReg, MemWrite, ALU_Src, RegWrite, ecall, S_Type, BEQ, BNE, jal, jalr,uret; // Output signals from the hard-wired controller
+    wire MemtoReg, MemWrite, ALU_Src, RegWrite, ecall, S_Type, BEQ, BNE, jal, jalr, uret, lui; // Output signals from the hard-wired controller
     wire [3:0] ALUOP; // Operation signals
     wire [4:0] rs1, rs2, rd, R1Adr, R2Adr; // Extracted signals for R1, R2 addresses, and write address (rd)
-    wire [31:0] RDin, R1, R2; // RegFile input and output data
+    wire [31:0] RDin_1, RDin , R1, R2; // RegFile input and output data   RDin 1 add support for lui
     wire [11:0] Imm_I, Imm_S, Imm_B; // Immediate values for I, S, B-type instructions
     wire [19:0] Imm_J; // Immediate value for J-type instruction
-    wire [31:0] Imm_I_ex, Imm_S_ex, Imm_B_ex, Imm_J_ex, Imm; // Extended immediate values
+    wire [31:0] Imm_I_ex, Imm_S_ex, Imm_B_ex, Imm_J_ex, Imm ,Imm_lui; // Extended immediate values
     wire [1:0] Imm_Sel; // Immediate value selection signal
     wire B_signal, S_signal, J_signal, Jalr_signal; // Instruction signals
     wire [31:0] X, Y; // Inputs to ALU
@@ -57,11 +57,12 @@ module CPU_RISCV(
     assign rs1 = IR[19:15];
     assign rs2 = IR[24:20];
     assign rd = IR[11:7];
-    // Immediate values for I, S, B, J-type instructions
+    // Immediate values for I, S, B, J-type instructions  add support for lui
     assign Imm_I = IR[31:20];
     assign Imm_S = {IR[31:25], IR[11:7]};
     assign Imm_B = {IR[31], IR[7], IR[30:25], IR[11:8]};
     assign Imm_J = {IR[31], IR[19:12], IR[20], IR[30:21]};
+    assign Imm_lui = {IR[31:12],12'b000000000000};
     // Generate instruction type signals
     assign B_signal = BEQ || BNE;
     assign S_signal = S_Type;
@@ -72,8 +73,6 @@ module CPU_RISCV(
     assign X = R1;
     // Branch jump signal
     assign Branch = (BEQ && equal) || (BNE && ~equal);
-    // Generate RDin selection signal
-    assign RDin_Sel = J_signal || Jalr_signal;
     // Generate branch jump address
     assign Branch_Adr = PC_out + Imm_shift;
     // Generate halt signal and LedData output signal
@@ -93,7 +92,7 @@ module CPU_RISCV(
     ROM IR_register(.Addr(PC_out[11:2]), .Dout(IR)); // Instruction register
     hard_wire_controller controller(.Funct(Funct), .OpCode(OpCode),.IR21(IR[21]),.ALUOP(ALUOP), .MemtoReg(MemtoReg), .MemWrite(MemWrite),
         .ALU_Src(ALU_Src), .RegWrite(RegWrite), .ecall(ecall), .S_Type(S_Type), .BEQ(BEQ), .BNE(BNE),
-        .jal(jal), .jalr(jalr),.uret(uret)); // Hard-wired controller
+        .jal(jal), .jalr(jalr),.uret(uret),.lui(lui)); // Hard-wired controller
     mux2 #(5) mux2_1(.out(R1Adr), .in0(rs1), .in1(5'b10001), .sel(ecall)); // 2-way multiplexer 1
     mux2 #(5) mux2_2(.out(R2Adr), .in0(rs2), .in1(5'b01010), .sel(ecall)); // 2-way multiplexer 2
     RegFile Regfile(.Din(RDin), .R1Adr(R1Adr), .R2Adr(R2Adr), .WAdr(rd), .WE(RegWrite), .CLK(CLK_N), .R1(R1), .R2(R2)); // Data register
@@ -106,12 +105,13 @@ module CPU_RISCV(
     ALU ALU(.x(X), .y(Y), .ALU_op(ALUOP), .ALU_result(Result1), .greater(greater_equal), .less(lesser), .equal(equal)); // ALU
     MEM Mem(.Addr(Result1[11:2]), .Din(R2), .CLK(CLK_N), .MemWrite(MemWrite), .sel(4'b1111), .Dout(MEMout)); // Data memory
     mux2 #(32) mux2_4(.out(MEMData), .in0(Result1), .in1(MEMout), .sel(MemtoReg)); // 2-way multiplexer 4
-    mux2 #(32) mux2_5(.out(RDin), .in0(MEMData), .in1(PC_add_4), .sel(RDin_Sel)); // 2-way multiplexer 5
-    log_shifter_left #(.data_WIDTH(32), .shift_WIDTH(5)) shifter(.in(Imm), .out(Imm_shift), .shiftAmount(5'b00001)); // Logical left shift
-    mux2 #(32) mux2_6(.out(PC_Adr), .in0(PC_add_4), .in1(Branch_Adr), .sel(Branch || J_signal)); // 2-way multiplexer 6
-    mux2 #(32) mux2_7(.out(next_PC), .in0(PC_Adr), .in1(Result1), .sel(Jalr_signal)); // 2-way multiplexer 7
+    mux2 #(32) mux2_5(.out(RDin_1), .in0(MEMData), .in1(PC_add_4), .sel(J_signal || Jalr_signal)); // 2-way multiplexer 5
+    mux2 #(32) mux2_6(.out(RDin), .in0(RDin_1), .in1(Imm_lui), .sel(lui)); // 2-way multiplexer 6
+    mux2 #(32) mux2_7(.out(PC_Adr), .in0(PC_add_4), .in1(Branch_Adr), .sel(Branch || J_signal)); // 2-way multiplexer 7
+    mux2 #(32) mux2_8(.out(next_PC), .in0(PC_Adr), .in1(Result1), .sel(Jalr_signal)); // 2-way multiplexer 8
     mux2 #(32) interrAddr(.out(EPCAddr_in), .in0(next_PC), .in1(InterrAddr), .sel(InterrEN)); //2-way mul for interrupt
     mux2 #(32) EPCAddr(.out(PC_in), .in0(EPCAddr_in), .in1(EPC_out), .sel(uret));    //2-way mul for epc interrupt
+    log_shifter_left #(.data_WIDTH(32), .shift_WIDTH(5)) shifter(.in(Imm), .out(Imm_shift), .shiftAmount(5'b00001)); // Logical left shift
     register #(32) LED(.CLK(CLK_N), .RST(RST), .EN(Ledout), .Din(R2), .Dout(LedData)); // LedData register
     FPGADigit FPGADigit(.LedData(LED_Show), .CLK(CLK), .SEG(SEG), .AN(AN),.RST(RST)); // Seven-segment display controller
     
