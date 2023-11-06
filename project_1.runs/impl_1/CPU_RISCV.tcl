@@ -135,9 +135,11 @@ OPTRACE "set parameters" START { }
   set_property parent.project_path C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.xpr [current_project]
   set_property ip_output_repo C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
+  set_property XPM_LIBRARIES XPM_CDC [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.runs/synth_1/CPU_RISCV.dcp
+  read_ip -quiet c:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.srcs/constrs_1/imports/risc-V/Nexys4DDR_Master.xdc
 OPTRACE "read constraints: implementation" END { }
@@ -276,6 +278,7 @@ set rc [catch {
   create_msg_db write_bitstream.pb
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }
+  set_property XPM_LIBRARIES XPM_CDC [current_project]
   catch { write_mem_info -force -no_partial_mmi CPU_RISCV.mmi }
 OPTRACE "write_bitstream setup" END { }
 OPTRACE "write_bitstream" START { }

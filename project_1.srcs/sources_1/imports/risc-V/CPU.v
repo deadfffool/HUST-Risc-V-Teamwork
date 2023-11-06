@@ -13,7 +13,10 @@ module CPU_RISCV(
     output halt,// Halt signal
     
     input UP,DOWN,CENTER,LEFT,RIGHT, //interrupt
-    output [4:0] it // interrupt LED
+    output [4:0] it, // interrupt LED
+    
+    output h_sync,v_sync, //VGA
+    output [11:0] vga
     );
 
     // Necessary Wires
@@ -129,5 +132,43 @@ module CPU_RISCV(
     .interr(Interr),.uret(uret),.interrEN(InterrEN),.CLK(CLK_N),.interrAddr(InterrAddr));
     
     InterrEn interren(.uret(uret),.CLK(CLK_N),.interr(Interr),.interrEN(InterrEN));
+    
+    
+    //VGA
+   wire [10:0] vaddr_x;//要显示的像素点的行坐标
+   wire [10:0] vaddr_y;//要显示的像素点的列坐标
+   wire [11:0] vdata;//要显示的像素点的rgb
+   
+   reg [10:0] graph_addr_x_to_change;//要修改的像素块的行坐标
+   reg [10:0] graph_addr_y_to_change;//要修改的像素块的列坐标
+   reg [11:0] graph_to_change_to;//要修改的像素块的rgb
+   reg  graph_modify_enable;
+   wire clk_vga;
 
+   clk_wiz_0 clk_wiz (.clk_in1(CLK),.clk_out1(clk_vga));
+
+   vga_graph_mode vga_graph_mode(//(x,y)->RGB
+         .clk(CLK),//ram_change
+         .vaddr_x(vaddr_x),//input 要显示的像素点的行坐标
+         .vaddr_y(vaddr_y),//input 要显示的像素点的列坐标
+         .pixel_modify_enable(0),
+//         .pixel_addr_x_to_change(graph_addr_x_to_change),
+//         .pixel_addr_y_to_change(graph_addr_y_to_change),
+//         .pixel_newRGB(graph_to_change_to),
+          .pixel_addr_x_to_change(0),
+          .pixel_addr_y_to_change(0),
+          .pixel_newRGB(0),
+         .vga_graph_mode_output(vdata)//output 要显示的像素点的rgb
+     );
+    //显示到屏幕 存储像素点ram
+    //输入要显示的字符 和要显示的像素点行列坐标 输出vga显示要素 vga h_sync v_sync
+    vga_display vga_display(
+            .clk(clk_vga),
+            .vdata(vdata),//要显示的像素点的rgb
+            .vaddr_x(vaddr_x),
+            .vaddr_y(vaddr_y),
+            .h_sync(h_sync),
+            .v_sync(v_sync),
+            .vga(vga)
+        );
 endmodule
