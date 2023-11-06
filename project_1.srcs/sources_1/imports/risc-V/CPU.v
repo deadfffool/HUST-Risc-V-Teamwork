@@ -42,12 +42,18 @@ module CPU_RISCV(
     wire Ledout; // Halt signal and LedData output signal
     wire [31:0] LedData, LED_Show; // Seven-segment display output signals
     wire [3:0] MemSel, Sel1;
-    wire [4:0] Sel2;
+    wire [4:0] Sel2;    
     
     // interrupt 
     wire [31:0] next_PC,EPC_out,EPCAddr_in,InterrAddr;
     wire InterrEN,Interr;
     wire uret1,uret2,uret3,uret4,uret5,Interrupt1,Interrupt2,Interrupt3,Interrupt4,Interrupt5;
+    
+    //VGA
+    wire [11:0] vaddr_x;//要显示的像素点的行坐标
+    wire [10:0] vaddr_y;//要显示的像素点的列坐标
+    wire [11:0] vdata;//要显示的像素点的rgb
+    wire clk_vga;
     
     
     // Logic Implementation
@@ -79,9 +85,9 @@ module CPU_RISCV(
     // Generate branch jump address
     assign Branch_Adr = PC_out + Imm_shift;
     // Generate halt signal and LedData output signal
-    assign halt = ecall && (~(R1 == 32'h00000022));
+    assign halt = ecall && ~(R1 == 32'h00000022) && ~(R1 == 32'h00000064);
     assign Ledout = ecall && (R1 == 32'h00000022);
-
+    
     // Instantiate 
     divider #(50000000) divider1(.clk(CLK), .clk_N(CLK_1)); // Generate 1Hz clock signal
     divider #(5000000) divider2(.clk(CLK), .clk_N(CLK_2)); // Generate 10Hz clock signal
@@ -106,7 +112,7 @@ module CPU_RISCV(
     mux4 #(32) mux4_1(.out(Imm), .in0(Imm_I_ex), .in1(Imm_S_ex), .in2(Imm_B_ex), .in3(Imm_J_ex), .sel(Imm_Sel)); // 4-way multiplexer
     mux2 #(32) mux2_3(.out(Y), .in0(R2), .in1(Imm), .sel(ALU_Src)); // 2-way multiplexer 3
     ALU ALU(.x(X), .y(Y), .ALU_op(ALUOP), .ALU_result(Result1), .greater(greater_equal), .less(lesser), .equal(equal)); // ALU
-    MEM Mem(.Addr(Result1[11:2]), .Din(R2), .CLK(CLK_N), .MemWrite(MemWrite), .sel(4'b1111), .Dout(MEMout)); // Data memory
+    MEM Mem(.Addr(Result1[11:2]), .Din(R2), .CLK(CLK_N), .MemWrite(MemWrite), .sel(4'b1111), .Dout(MEMout),.vaddr_x(vaddr_x),.vaddr_y(vaddr_y),.vdata(vdata)); // Data memory
     mux2 #(32) mux2_4(.out(MEMData), .in0(Result1), .in1(MEMout), .sel(MemtoReg)); // 2-way multiplexer 4
     mux2 #(32) mux2_5(.out(RDin_1), .in0(MEMData), .in1(PC_add_4), .sel(J_signal || Jalr_signal)); // 2-way multiplexer 5
     mux2 #(32) mux2_6(.out(RDin), .in0(RDin_1), .in1(Imm_lui), .sel(lui)); // 2-way multiplexer 6
@@ -132,36 +138,9 @@ module CPU_RISCV(
     .interr(Interr),.uret(uret),.interrEN(InterrEN),.CLK(CLK_N),.interrAddr(InterrAddr));
     
     InterrEn interren(.uret(uret),.CLK(CLK_N),.interr(Interr),.interrEN(InterrEN));
-    
-    
+
     //VGA
-   wire [10:0] vaddr_x;//要显示的像素点的行坐标
-   wire [10:0] vaddr_y;//要显示的像素点的列坐标
-   wire [11:0] vdata;//要显示的像素点的rgb
-   
-   reg [10:0] graph_addr_x_to_change;//要修改的像素块的行坐标
-   reg [10:0] graph_addr_y_to_change;//要修改的像素块的列坐标
-   reg [11:0] graph_to_change_to;//要修改的像素块的rgb
-   reg  graph_modify_enable;
-   wire clk_vga;
-
-   clk_wiz_0 clk_wiz (.clk_in1(CLK),.clk_out1(clk_vga));
-
-   vga_graph_mode vga_graph_mode(//(x,y)->RGB
-         .clk(CLK),//ram_change
-         .vaddr_x(vaddr_x),//input 要显示的像素点的行坐标
-         .vaddr_y(vaddr_y),//input 要显示的像素点的列坐标
-         .pixel_modify_enable(0),
-//         .pixel_addr_x_to_change(graph_addr_x_to_change),
-//         .pixel_addr_y_to_change(graph_addr_y_to_change),
-//         .pixel_newRGB(graph_to_change_to),
-          .pixel_addr_x_to_change(0),
-          .pixel_addr_y_to_change(0),
-          .pixel_newRGB(0),
-         .vga_graph_mode_output(vdata)//output 要显示的像素点的rgb
-     );
-    //显示到屏幕 存储像素点ram
-    //输入要显示的字符 和要显示的像素点行列坐标 输出vga显示要素 vga h_sync v_sync
+    clk_wiz_0 clk_wiz (.clk_in1(CLK),.clk_out1(clk_vga));
     vga_display vga_display(
             .clk(clk_vga),
             .vdata(vdata),//要显示的像素点的rgb
@@ -172,3 +151,4 @@ module CPU_RISCV(
             .vga(vga)
         );
 endmodule
+

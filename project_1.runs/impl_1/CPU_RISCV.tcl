@@ -139,7 +139,7 @@ OPTRACE "set parameters" START { }
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.runs/synth_1/CPU_RISCV.dcp
-  read_ip -quiet c:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  read_ip -quiet C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc C:/Users/Miles/Desktop/HUST-Risc-V-Teamwork/project_1.srcs/constrs_1/imports/risc-V/Nexys4DDR_Master.xdc
 OPTRACE "read constraints: implementation" END { }

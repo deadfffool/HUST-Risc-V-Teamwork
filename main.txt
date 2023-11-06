@@ -1,0 +1,267 @@
+Address     Code        Basic                        Line Source
+
+0x00000000  0x2b80006f  jal x0,0x000002b8            2    j main_function
+0x00000004  0x00040c37  lui x24,0x00000040           7    li s8 0x40001
+0x00000008  0x001c0c13  addi x24,x24,1                    
+0x0000000c  0x01802023  sw x24,0(x0)                 8    sw s8, 0(zero)
+0x00000010  0x00040c37  lui x24,0x00000040           10   li s8, 0x40040
+0x00000014  0x040c0c13  addi x24,x24,0x00000040           
+0x00000018  0x01802223  sw x24,4(x0)                 11   sw s8, 4(zero)
+0x0000001c  0x3fe50c37  lui x24,0x0003fe50           13   li s8, 0x3fe4ffff
+0x00000020  0xfffc0c13  addi x24,x24,0xffffffff           
+0x00000024  0x01802423  sw x24,8(x0)                 14   sw s8, 8(zero)
+0x00000028  0x00240c37  lui x24,0x00000240           16   li s8, 0x240004
+0x0000002c  0x004c0c13  addi x24,x24,4                    
+0x00000030  0x01802623  sw x24,12(x0)                17   sw s8, 12(zero)
+0x00000034  0x00240c37  lui x24,0x00000240           19   li s8, 0x240004
+0x00000038  0x004c0c13  addi x24,x24,4                    
+0x0000003c  0x01802823  sw x24,16(x0)                20   sw s8, 16(zero)
+0x00000040  0x3aa80c37  lui x24,0x0003aa80           22   li s8, 0x3aa7f924
+0x00000044  0x924c0c13  addi x24,x24,0xfffff924           
+0x00000048  0x01802a23  sw x24,20(x0)                23   sw s8, 20(zero)
+0x0000004c  0x0aa00c37  lui x24,0x0000aa00           25   li s8, 0xaa00124
+0x00000050  0x124c0c13  addi x24,x24,0x00000124           
+0x00000054  0x01802c23  sw x24,24(x0)                26   sw s8, 24(zero)
+0x00000058  0x0aa00c37  lui x24,0x0000aa00           28   li s8, 0xaa00124
+0x0000005c  0x124c0c13  addi x24,x24,0x00000124           
+0x00000060  0x01802e23  sw x24,28(x0)                29   sw s8, 28(zero)
+0x00000064  0xfac00c37  lui x24,0xffffac00           31   li s8, 0xfabfff24
+0x00000068  0xf24c0c13  addi x24,x24,0xffffff24           
+0x0000006c  0x03802023  sw x24,0x00000020(x0)        32   sw s8, 32(zero)
+0x00000070  0x02820c37  lui x24,0x00002820           34   li s8, 0x2820024
+0x00000074  0x024c0c13  addi x24,x24,0x00000024           
+0x00000078  0x03802223  sw x24,0x00000024(x0)        35   sw s8, 36(zero)
+0x0000007c  0x3aa60c37  lui x24,0x0003aa60           37   li s8, 0x3aa60024
+0x00000080  0x024c0c13  addi x24,x24,0x00000024           
+0x00000084  0x03802423  sw x24,0x00000028(x0)        38   sw s8, 40(zero)
+0x00000088  0x2efa8c37  lui x24,0x0002efa8           40   li s8, 0x2efa7fe4
+0x0000008c  0xfe4c0c13  addi x24,x24,0xffffffe4           
+0x00000090  0x03802623  sw x24,0x0000002c(x0)        41   sw s8, 44(zero)
+0x00000094  0x20120c37  lui x24,0x00020120           43   li s8, 0x20120020
+0x00000098  0x020c0c13  addi x24,x24,0x00000020           
+0x0000009c  0x03802823  sw x24,0x00000030(x0)        44   sw s8, 48(zero)
+0x000000a0  0x2ff20c37  lui x24,0x0002ff20           46   li s8, 0x2ff20020
+0x000000a4  0x020c0c13  addi x24,x24,0x00000020           
+0x000000a8  0x03802a23  sw x24,0x00000034(x0)        47   sw s8, 52(zero)
+0x000000ac  0x24440c37  lui x24,0x00024440           49   li s8, 0x2443ff3f
+0x000000b0  0xf3fc0c13  addi x24,x24,0xffffff3f           
+0x000000b4  0x03802c23  sw x24,0x00000038(x0)        50   sw s8, 56(zero)
+0x000000b8  0x21120c37  lui x24,0x00021120           52   li s8, 0x21120020
+0x000000bc  0x020c0c13  addi x24,x24,0x00000020           
+0x000000c0  0x03802e23  sw x24,0x0000003c(x0)        53   sw s8, 60(zero)
+0x000000c4  0x27f20c37  lui x24,0x00027f20           55   li s8, 0x27f20020
+0x000000c8  0x020c0c13  addi x24,x24,0x00000020           
+0x000000cc  0x05802023  sw x24,0x00000040(x0)        56   sw s8, 64(zero)
+0x000000d0  0x24128c37  lui x24,0x00024128           58   li s8, 0x24127f24
+0x000000d4  0xf24c0c13  addi x24,x24,0xffffff24           
+0x000000d8  0x05802223  sw x24,0x00000044(x0)        59   sw s8, 68(zero)
+0x000000dc  0x20120c37  lui x24,0x00020120           61   li s8, 0x20120124
+0x000000e0  0x124c0c13  addi x24,x24,0x00000124           
+0x000000e4  0x05802423  sw x24,0x00000048(x0)        62   sw s8, 72(zero)
+0x000000e8  0x20f20c37  lui x24,0x00020f20           64   li s8, 0x20f20124
+0x000000ec  0x124c0c13  addi x24,x24,0x00000124           
+0x000000f0  0x05802623  sw x24,0x0000004c(x0)        65   sw s8, 76(zero)
+0x000000f4  0x3c840c37  lui x24,0x0003c840           67   li s8, 0x3c83ff24
+0x000000f8  0xf24c0c13  addi x24,x24,0xffffff24           
+0x000000fc  0x05802823  sw x24,0x00000050(x0)        68   sw s8, 80(zero)
+0x00000100  0x04820c37  lui x24,0x00004820           70   li s8, 0x4820004
+0x00000104  0x004c0c13  addi x24,x24,4                    
+0x00000108  0x05802a23  sw x24,0x00000054(x0)        71   sw s8, 84(zero)
+0x0000010c  0x04920c37  lui x24,0x00004920           73   li s8, 0x4920004
+0x00000110  0x004c0c13  addi x24,x24,4                    
+0x00000114  0x05802c23  sw x24,0x00000058(x0)        74   sw s8, 88(zero)
+0x00000118  0xe4928c37  lui x24,0xfffe4928           76   li s8, 0xe4927ffc
+0x0000011c  0xffcc0c13  addi x24,x24,0xfffffffc           
+0x00000120  0x05802e23  sw x24,0x0000005c(x0)        77   sw s8, 92(zero)
+0x00000124  0x24904c37  lui x24,0x00024904           79   li s8, 0x24904000
+0x00000128  0x000c0c13  addi x24,x24,0                    
+0x0000012c  0x07802023  sw x24,0x00000060(x0)        80   sw s8, 96(zero)
+0x00000130  0x24904c37  lui x24,0x00024904           82   li s8, 0x24904000
+0x00000134  0x000c0c13  addi x24,x24,0                    
+0x00000138  0x07802223  sw x24,0x00000064(x0)        83   sw s8, 100(zero)
+0x0000013c  0x249fdc37  lui x24,0x000249fd           85   li s8, 0x249fcfff
+0x00000140  0xfffc0c13  addi x24,x24,0xffffffff           
+0x00000144  0x07802423  sw x24,0x00000068(x0)        86   sw s8, 104(zero)
+0x00000148  0x04800c37  lui x24,0x00004800           88   li s8, 0x4800000
+0x0000014c  0x000c0c13  addi x24,x24,0                    
+0x00000150  0x07802623  sw x24,0x0000006c(x0)        89   sw s8, 108(zero)
+0x00000154  0x04800c37  lui x24,0x00004800           91   li s8, 0x4800000
+0x00000158  0x000c0c13  addi x24,x24,0                    
+0x0000015c  0x07802823  sw x24,0x00000070(x0)        92   sw s8, 112(zero)
+0x00000160  0xfd000c37  lui x24,0xffffd000           94   li s8, 0xfcffffcf
+0x00000164  0xfcfc0c13  addi x24,x24,0xffffffcf           
+0x00000168  0x07802a23  sw x24,0x00000074(x0)        95   sw s8, 116(zero)
+0x0000016c  0x00800c37  lui x24,0x00000800           97   li s8, 0x800000
+0x00000170  0x000c0c13  addi x24,x24,0                    
+0x00000174  0x07802c23  sw x24,0x00000078(x0)        98   sw s8, 120(zero)
+0x00000178  0x00800c37  lui x24,0x00000800           100  li s8, 0x800000
+0x0000017c  0x000c0c13  addi x24,x24,0                    
+0x00000180  0x07802e23  sw x24,0x0000007c(x0)        101  sw s8, 124(zero)
+0x00000184  0x00200073  uret                         102  uret
+0x00000188  0x01f00c13  addi x24,x0,31               106  addi s8, zero, 31
+0x0000018c  0x29828a63  beq x5,x24,0x00000294        107  beq t0, s8, close
+0x00000190  0x00100493  addi x9,x0,1                 108  addi s1, zero, 1
+0x00000194  0x00928933  add x18,x5,x9                109  add s2, t0, s1
+0x00000198  0x012499b3  sll x19,x9,x18               110  sll s3, s1, s2 
+0x0000019c  0x00231a13  slli x20,x6,2                111  slli s4, t1, 2     
+0x000001a0  0x000a2a83  lw x21,0(x20)                112  lw  s5, 0(s4)     
+0x000001a4  0x013afb33  and x22,x21,x19              113  and s6 , s5, s3
+0x000001a8  0x260b1c63  bne x22,x0,0x00000278        114  bne s6, zero, close
+0x000001ac  0x009282b3  add x5,x5,x9                 116  add t0, t0, s1   #不会撞墙就移动光点，下面的程序都类似
+0x000001b0  0x013aeab3  or x21,x21,x19               117  or s5, s5, s3    
+0x000001b4  0x0019d993  srli x19,x19,1               118  srli s3, s3, 1
+0x000001b8  0x013acab3  xor x21,x21,x19              119  xor s5, s5, s3   
+0x000001bc  0x015a2023  sw x21,0(x20)                120  sw s5, 0(s4)
+0x000001c0  0x01f00b93  addi x23,x0,31               122  addi s7, zero, 31
+0x000001c4  0x25729e63  bne x5,x23,0x0000025c        123  bne t0, s7, close
+0x000001c8  0x21730a63  beq x6,x23,0x00000214        124  beq t1, s7, game_success
+0x000001cc  0x00200073  uret                         125  uret
+0x000001d0  0x24028863  beq x5,x0,0x00000250         128  beq t0, zero, close
+0x000001d4  0x00100493  addi x9,x0,1                 129  addi s1, zero, 1   
+0x000001d8  0x40928933  sub x18,x5,x9                130  sub s2, t0, s1
+0x000001dc  0x012499b3  sll x19,x9,x18               131  sll s3, s1, s2  
+0x000001e0  0x00231a13  slli x20,x6,2                132  slli s4, t1, 2     
+0x000001e4  0x000a2a83  lw x21,0(x20)                133  lw  s5, 0(s4)     
+0x000001e8  0x013afb33  and x22,x21,x19              134  and s6 , s5, s3
+0x000001ec  0x220b1a63  bne x22,x0,0x00000234        135  bne s6, zero, close
+0x000001f0  0x409282b3  sub x5,x5,x9                 138  sub t0, t0, s1   
+0x000001f4  0x013aeab3  or x21,x21,x19               139  or s5, s5, s3    
+0x000001f8  0x00199993  slli x19,x19,1               140  slli s3, s3, 1
+0x000001fc  0x013acab3  xor x21,x21,x19              141  xor s5, s5, s3   
+0x00000200  0x015a2023  sw x21,0(x20)                142  sw s5, 0(s4)      
+0x00000204  0x01f00b93  addi x23,x0,31               144  addi s7, zero, 31
+0x00000208  0x21729c63  bne x5,x23,0x00000218        145  bne t0, s7, close
+0x0000020c  0x1d730863  beq x6,x23,0x000001d0        146  beq t1, s7, game_success
+0x00000210  0x00200073  uret                         147  uret
+0x00000214  0x01f00c13  addi x24,x0,31               150  addi s8, zero, 31
+0x00000218  0x21830463  beq x6,x24,0x00000208        151  beq t1, s8, close  
+0x0000021c  0x00100493  addi x9,x0,1                 152  addi s1, zero, 1     
+0x00000220  0x00028933  add x18,x5,x0                153  add s2, t0, zero
+0x00000224  0x012499b3  sll x19,x9,x18               154  sll s3, s1, s2 
+0x00000228  0x00930bb3  add x23,x6,x9                155  add s7, t1, s1 
+0x0000022c  0x002b9a13  slli x20,x23,2               156  slli s4, s7, 2    
+0x00000230  0x000a2a83  lw x21,0(x20)                157  lw  s5, 0(s4)    
+0x00000234  0x013afb33  and x22,x21,x19              158  and s6 , s5, s3
+0x00000238  0x1e0b1463  bne x22,x0,0x000001e8        159  bne s6, zero, close  
+0x0000023c  0x00930333  add x6,x6,x9                 161  add t1, t1, s1   
+0x00000240  0x013aeab3  or x21,x21,x19               162  or s5, s5, s3    
+0x00000244  0x015a2023  sw x21,0(x20)                163  sw s5, 0(s4)      
+0x00000248  0xffca0a13  addi x20,x20,0xfffffffc      165  addi s4, s4, -4     
+0x0000024c  0x000a2a83  lw x21,0(x20)                166  lw s5, 0(s4)
+0x00000250  0x013acab3  xor x21,x21,x19              167  xor s5, s5, s3  
+0x00000254  0x015a2023  sw x21,0(x20)                168  sw s5, 0(s4)      
+0x00000258  0x01f00b93  addi x23,x0,31               170  addi s7, zero, 31
+0x0000025c  0x1d729263  bne x5,x23,0x000001c4        171  bne t0, s7, close
+0x00000260  0x17730e63  beq x6,x23,0x0000017c        172  beq t1, s7, game_success
+0x00000264  0x00200073  uret                         173  uret
+0x00000268  0x1a030c63  beq x6,x0,0x000001b8         176  beq t1, zero, close 
+0x0000026c  0x00100493  addi x9,x0,1                 177  addi s1, zero, 1     
+0x00000270  0x00028933  add x18,x5,x0                178  add s2, t0, zero
+0x00000274  0x012499b3  sll x19,x9,x18               179  sll s3, s1, s2  
+0x00000278  0x40930bb3  sub x23,x6,x9                180  sub s7, t1, s1   
+0x0000027c  0x002b9a13  slli x20,x23,2               181  slli s4, s7, 2     
+0x00000280  0x000a2a83  lw x21,0(x20)                182  lw  s5, 0(s4)     
+0x00000284  0x013afb33  and x22,x21,x19              183  and s6 , s5, s3
+0x00000288  0x180b1c63  bne x22,x0,0x00000198        184  bne s6, zero, close  
+0x0000028c  0x40930333  sub x6,x6,x9                 186  sub t1, t1, s1   
+0x00000290  0x013aeab3  or x21,x21,x19               187  or s5, s5, s3    
+0x00000294  0x015a2023  sw x21,0(x20)                188  sw s5, 0(s4)      
+0x00000298  0x004a0a13  addi x20,x20,4               190  addi s4, s4, 4     
+0x0000029c  0x000a2a83  lw x21,0(x20)                191  lw s5, 0(s4)
+0x000002a0  0x013acab3  xor x21,x21,x19              192  xor s5, s5, s3  
+0x000002a4  0x015a2023  sw x21,0(x20)                193  sw s5, 0(s4)      
+0x000002a8  0x01f00b93  addi x23,x0,31               195  addi s7, zero, 31
+0x000002ac  0x17729a63  bne x5,x23,0x00000174        196  bne t0, s7, close
+0x000002b0  0x13730663  beq x6,x23,0x0000012c        197  beq t1, s7, game_success
+0x000002b4  0x00200073  uret                         198  uret
+0x000002b8  0x00000293  addi x5,x0,0                 202  addi t0, zero, 0 
+0x000002bc  0x00000313  addi x6,x0,0                 203  addi t1, zero, 0  
+0x000002c0  0x00557c37  lui x24,0x00000557           205  li s8, 0x557700
+0x000002c4  0x700c0c13  addi x24,x24,0x00000700           
+0x000002c8  0x01802023  sw x24,0(x0)                 206  sw s8, 0(zero)
+0x000002cc  0x00554c37  lui x24,0x00000554           208  li s8, 0x554200
+0x000002d0  0x200c0c13  addi x24,x24,0x00000200           
+0x000002d4  0x01802223  sw x24,4(x0)                 209  sw s8, 4(zero)
+0x000002d8  0x00757c37  lui x24,0x00000757           211  li s8, 0x757200
+0x000002dc  0x200c0c13  addi x24,x24,0x00000200           
+0x000002e0  0x01802423  sw x24,8(x0)                 212  sw s8, 8(zero)
+0x000002e4  0x00551c37  lui x24,0x00000551           214  li s8, 0x551200
+0x000002e8  0x200c0c13  addi x24,x24,0x00000200           
+0x000002ec  0x01802623  sw x24,12(x0)                215  sw s8, 12(zero)
+0x000002f0  0x00577c37  lui x24,0x00000577           217  li s8, 0x577200
+0x000002f4  0x200c0c13  addi x24,x24,0x00000200           
+0x000002f8  0x01802823  sw x24,16(x0)                218  sw s8, 16(zero)
+0x000002fc  0x11088c37  lui x24,0x00011088           220  li s8, 0x11087cf8
+0x00000300  0xcf8c0c13  addi x24,x24,0xfffffcf8           
+0x00000304  0x01802e23  sw x24,28(x0)                221  sw s8, 28(zero)
+0x00000308  0x1b141c37  lui x24,0x0001b141           223  li s8, 0x1b140880
+0x0000030c  0x880c0c13  addi x24,x24,0xfffff880           
+0x00000310  0x03802023  sw x24,0x00000020(x0)        224  sw s8, 32(zero)
+0x00000314  0x153e1c37  lui x24,0x000153e1           226  li s8, 0x153e10f8
+0x00000318  0x0f8c0c13  addi x24,x24,0x000000f8           
+0x0000031c  0x03802223  sw x24,0x00000024(x0)        227  sw s8, 36(zero)
+0x00000320  0x11222c37  lui x24,0x00011222           229  li s8, 0x11222080
+0x00000324  0x080c0c13  addi x24,x24,0x00000080           
+0x00000328  0x03802423  sw x24,0x00000028(x0)        230  sw s8, 40(zero)
+0x0000032c  0x11228c37  lui x24,0x00011228           232  li s8, 0x11227cf8
+0x00000330  0xcf8c0c13  addi x24,x24,0xfffffcf8           
+0x00000334  0x03802623  sw x24,0x0000002c(x0)        233  sw s8, 44(zero)
+0x00000338  0x060e5c37  lui x24,0x000060e5           235  li s8, 0x60e4ea0
+0x0000033c  0xea0c0c13  addi x24,x24,0xfffffea0           
+0x00000340  0x03802c23  sw x24,0x00000038(x0)        236  sw s8, 56(zero)
+0x00000344  0x0208bc37  lui x24,0x0000208b           238  li s8, 0x208a8a0
+0x00000348  0x8a0c0c13  addi x24,x24,0xfffff8a0           
+0x0000034c  0x03802e23  sw x24,0x0000003c(x0)        239  sw s8, 60(zero)
+0x00000350  0x020efc37  lui x24,0x000020ef           241  li s8, 0x20eee40
+0x00000354  0xe40c0c13  addi x24,x24,0xfffffe40           
+0x00000358  0x05802023  sw x24,0x00000040(x0)        242  sw s8, 64(zero)
+0x0000035c  0x0208ac37  lui x24,0x0000208a           244  li s8, 0x208a240
+0x00000360  0x240c0c13  addi x24,x24,0x00000240           
+0x00000364  0x05802223  sw x24,0x00000044(x0)        245  sw s8, 68(zero)
+0x00000368  0x074ebc37  lui x24,0x000074eb           247  li s8, 0x74eae40
+0x0000036c  0xe40c0c13  addi x24,x24,0xfffffe40           
+0x00000370  0x05802423  sw x24,0x00000048(x0)        248  sw s8, 72(zero)
+0x00000374  0x070a5c37  lui x24,0x000070a5           250  li s8, 0x70a4ec0
+0x00000378  0xec0c0c13  addi x24,x24,0xfffffec0           
+0x0000037c  0x05802a23  sw x24,0x00000054(x0)        251  sw s8, 84(zero)
+0x00000380  0x010abc37  lui x24,0x000010ab           253  li s8, 0x10aaaa0
+0x00000384  0xaa0c0c13  addi x24,x24,0xfffffaa0           
+0x00000388  0x05802c23  sw x24,0x00000058(x0)        254  sw s8, 88(zero)
+0x0000038c  0x070efc37  lui x24,0x000070ef           256  li s8, 0x70eeea0
+0x00000390  0xea0c0c13  addi x24,x24,0xfffffea0           
+0x00000394  0x05802e23  sw x24,0x0000005c(x0)        257  sw s8, 92(zero)
+0x00000398  0x040abc37  lui x24,0x000040ab           259  li s8, 0x40aaca0
+0x0000039c  0xca0c0c13  addi x24,x24,0xfffffca0           
+0x000003a0  0x07802023  sw x24,0x00000060(x0)        260  sw s8, 96(zero)
+0x000003a4  0x074abc37  lui x24,0x000074ab           262  li s8, 0x74aaac0
+0x000003a8  0xac0c0c13  addi x24,x24,0xfffffac0           
+0x000003ac  0x07802223  sw x24,0x00000064(x0)        263  sw s8, 100(zero)
+0x000003b0  0x00000013  addi x0,x0,0                 266  nop
+0x000003b4  0x00000013  addi x0,x0,0                 267  nop
+0x000003b8  0x00000013  addi x0,x0,0                 268  nop
+0x000003bc  0x00000013  addi x0,x0,0                 269  nop
+0x000003c0  0x00000013  addi x0,x0,0                 270  nop
+0x000003c4  0x00000013  addi x0,x0,0                 271  nop
+0x000003c8  0x00000013  addi x0,x0,0                 272  nop
+0x000003cc  0x00000013  addi x0,x0,0                 273  nop
+0x000003d0  0x00000013  addi x0,x0,0                 274  nop
+0x000003d4  0xfddff06f  jal x0,0xffffffdc            275  j nop_cycle
+0x000003d8  0xfd9ff06f  jal x0,0xffffffd8            276  j nop_cycle
+0x000003dc  0x75777c37  lui x24,0x00075777           280  li s8, 0x75777772
+0x000003e0  0x772c0c13  addi x24,x24,0x00000772           
+0x000003e4  0x03802a23  sw x24,0x00000034(x0)        281  sw s8, 52(zero)
+0x000003e8  0x45445c37  lui x24,0x00045445           283  li s8, 0x45445442
+0x000003ec  0x442c0c13  addi x24,x24,0x00000442           
+0x000003f0  0x03802c23  sw x24,0x00000038(x0)        284  sw s8, 56(zero)
+0x000003f4  0x75447c37  lui x24,0x00075447           286  li s8, 0x75447772
+0x000003f8  0x772c0c13  addi x24,x24,0x00000772           
+0x000003fc  0x03802e23  sw x24,0x0000003c(x0)        287  sw s8, 60(zero)
+0x00000400  0x15444c37  lui x24,0x00015444           289  li s8, 0x15444110
+0x00000404  0x110c0c13  addi x24,x24,0x00000110           
+0x00000408  0x05802023  sw x24,0x00000040(x0)        290  sw s8, 64(zero)
+0x0000040c  0x77777c37  lui x24,0x00077777           292  li s8, 0x77777772
+0x00000410  0x772c0c13  addi x24,x24,0x00000772           
+0x00000414  0x05802223  sw x24,0x00000044(x0)        293  sw s8, 68(zero)
+0x00000418  0xf99ff06f  jal x0,0xffffff98            295  j nop_cycle
+0x0000041c  0xf95ff06f  jal x0,0xffffff94            296  j nop_cycle
+0x00000420  0x00200073  uret                         299  uret

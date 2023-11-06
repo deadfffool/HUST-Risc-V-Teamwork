@@ -1,9 +1,12 @@
-module MEM(Addr, Din, CLK, MemWrite, sel, Dout);
+module MEM(Addr, Din, CLK, MemWrite, sel, Dout, vaddr_x, vaddr_y, vdata);
     input [9:0] Addr;       // Address input
     input [31:0] Din;       // Data input
     input CLK, MemWrite;    // Clock signal and write enable
     input [3:0] sel;        // Data select signal
+    input [11:0] vaddr_x;
+    input [10:0] vaddr_y;
     output [31:0] Dout;     // Data output
+    output [11:0] vdata;
     reg [31:0] RAM[2**20-1:0]; // Storage registers, size is 2^20
 
     always @(posedge CLK) begin
@@ -20,8 +23,10 @@ module MEM(Addr, Din, CLK, MemWrite, sel, Dout);
                 RAM[Addr][31:24] <= Din[31:24]; // Write high-byte data
         end
     end
-
-    assign Dout = RAM[Addr]; // Data output is the stored value at the specified address
+    //addr_x/24 addr_y/24
+    assign Dout = RAM[Addr]; // Data output is the stored value at the spec ified address
+    assign vdata = (vaddr_x >= 11'h300)? 12'hf00 :
+                   (RAM[vaddr_y/24][31-(vaddr_x/24)])? 12'haaa : 12'h000;
 endmodule
 
 module RegFile(Din, R1Adr, R2Adr, WAdr, WE, CLK, R1, R2);
@@ -72,10 +77,8 @@ module ROM(Addr, Dout);
     input [9:0] Addr;          // Address input
     output [31:0] Dout;    // Data output
     reg [31:0] rom[1023:0];   // Read-only memory, size is 1024 32-bit data
-
     initial begin
-        $readmemh("C:\\Users\\Miles\\Desktop\\HUST-Risc-V-Teamwork\\LUI.txt", rom);    // Read initialization data from a file to fill the read-only memory
-    end
-    
+        $readmemh("C:\\Users\\Miles\\Desktop\\HUST-Risc-V-Teamwork\\main.txt", rom);    // Read initialization data from a file to fill the read-only memory
+    end    
     assign Dout = rom[Addr];
 endmodule
