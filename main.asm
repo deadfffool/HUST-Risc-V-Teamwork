@@ -99,6 +99,10 @@ sw s8, 120(zero)
 
 li s8, 0x800000
 sw s8, 124(zero)
+
+addi a7,zero,34  
+ecall
+
 uret
 
 #中断程序左：
@@ -118,6 +122,9 @@ or s5, s5, s3
 srli s3, s3, 1
 xor s5, s5, s3   
 sw s5, 0(s4)
+
+addi a7,zero,34  
+ecall
 
 addi s7, zero, 31
 bne t0, s7, close
@@ -140,6 +147,8 @@ or s5, s5, s3
 slli s3, s3, 1
 xor s5, s5, s3   
 sw s5, 0(s4)      
+addi a7,zero,34  
+ecall
 
 addi s7, zero, 31
 bne t0, s7, close
@@ -166,6 +175,8 @@ addi s4, s4, -4
 lw s5, 0(s4)
 xor s5, s5, s3  
 sw s5, 0(s4)      
+addi a7,zero,34  
+ecall
 
 addi s7, zero, 31
 bne t0, s7, close
@@ -191,6 +202,8 @@ addi s4, s4, 4
 lw s5, 0(s4)
 xor s5, s5, s3  
 sw s5, 0(s4)      
+addi a7,zero,34  
+ecall
 
 addi s7, zero, 31
 bne t0, s7, close
@@ -262,6 +275,9 @@ sw s8, 96(zero)
 li s8, 0x74aaac0
 sw s8, 100(zero)
 
+addi a7,zero,34  
+ecall
+
 nop_cycle:#空循环，等待中断按键
 nop
 nop
@@ -272,6 +288,10 @@ nop
 nop
 nop
 nop
+j nop_cycle
+j nop_cycle
+j nop_cycle
+j nop_cycle
 j nop_cycle
 
 game_success:
@@ -290,8 +310,14 @@ sw s8, 64(zero)
 li s8, 0x77777772
 sw s8, 68(zero)
 
+addi a7,zero,34  
+ecall
+j nop_cycle
 j nop_cycle
 j nop_cycle
 
 close:
+uret
+uret
+uret
 uret

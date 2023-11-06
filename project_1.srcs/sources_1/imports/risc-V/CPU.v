@@ -85,7 +85,7 @@ module CPU_RISCV(
     // Generate branch jump address
     assign Branch_Adr = PC_out + Imm_shift;
     // Generate halt signal and LedData output signal
-    assign halt = ecall && ~(R1 == 32'h00000022) && ~(R1 == 32'h00000064);
+    assign halt = ecall && ~(R1 == 32'h00000022);
     assign Ledout = ecall && (R1 == 32'h00000022);
     
     // Instantiate 

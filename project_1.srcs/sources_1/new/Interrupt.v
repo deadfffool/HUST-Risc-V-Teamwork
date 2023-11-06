@@ -57,7 +57,7 @@ module Scheduler(IRR1,IRR2,IRR3,IRR4,IRR5,interr,uret1,uret2,uret3,uret4,uret5,u
 
     PriorityEncoder P(.inputs({IRR5,IRR4,IRR3,IRR2,IRR1}),.interr(interr),.encoded(choice));
     //Interrupt handler Address
-    mux8 mux(.out(interrAddr), .in0(32'h0268),.in1(32'h0188),.in2(32'h0004),.in3(32'h01d0),.in4(32'h0214),.in5(32'h0),.in6(32'h0),.in7(32'h0),.sel(choice));
+    mux8 mux(.out(interrAddr), .in0(32'h0288),.in1(32'h0190),.in2(32'h0004),.in3(32'h01e0),.in4(32'h22c),.in5(32'h0),.in6(32'h0),.in7(32'h0),.sel(choice));
     register #(3) retReg(.CLK(CLK),.EN(interrEN),.Din(choice),.Dout(uret_choice),.RST(0));
     
     assign urettmp = (uret_choice == 3'b000) ? 5'b00001:
