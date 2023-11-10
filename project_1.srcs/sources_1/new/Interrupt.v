@@ -86,15 +86,16 @@ module InterrEn(uret,CLK,interr,interrEN);
  register #(1) IE(.CLK(CLK),.EN(EN),.Din(Din),.Dout(Dout),.RST(0));
 endmodule 
 
-module EPC(EN,Din,Dout);
+module EPC(EN,Din,clk,Dout);
     input EN;
+    input clk;
     input [31:0] Din;
     output [31:0] Dout;
     reg [31:0] ram;         // Register
     initial ram = 0;         // Initialize the register to 0
-
-    always @(posedge EN) begin
-            ram <= Din;        // If enable signal is active, set register value to the input data
+    always @(posedge clk) begin
+        if(EN)
+           ram <= Din;        // If enable signal is active, set register value to the input data
         end
     assign Dout = ram;     
 endmodule

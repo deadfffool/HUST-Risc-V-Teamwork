@@ -131,7 +131,7 @@ module CPU_RISCV(
     Interrupter Interrupter4(.CLK(CLK_N),.IR(RIGHT),.uret(uret4),.interrupt(Interrupt4),.LED(it[3]));
     Interrupter Interrupter5(.CLK(CLK_N),.IR(DOWN),.uret(uret5),.interrupt(Interrupt5),.LED(it[4]));
     
-    EPC epc(.EN(InterrEN),.Din(next_PC),.Dout(EPC_out));
+    EPC epc(.EN(InterrEN),.Din(next_PC),.Dout(EPC_out),.clk(CLK_N));
     
     Scheduler scheduler(.IRR1(Interrupt1),.IRR2(Interrupt2),.IRR3(Interrupt3),.IRR4(Interrupt4),.IRR5(Interrupt5),
     .uret1(uret1),.uret2(uret2),.uret3(uret3),.uret4(uret4),.uret5(uret5),

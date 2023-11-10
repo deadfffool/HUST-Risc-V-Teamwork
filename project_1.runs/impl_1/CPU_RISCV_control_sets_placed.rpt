@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Mon Nov  6 21:40:14 2023
+| Date         : Fri Nov 10 13:45:23 2023
 | Host         : Chenxuan-RazerBlade running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file CPU_RISCV_control_sets_placed.rpt
 | Design       : CPU_RISCV
@@ -42,8 +42,8 @@ Table of Contents
 | Total control sets |    31 |
 | >= 0 to < 4        |     6 |
 | >= 4 to < 6        |     1 |
-| >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     1 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     3 |
 | >= 14 to < 16      |     0 |
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              61 |           34 |
+| No           | No                    | No                     |              26 |           14 |
 | No           | No                    | Yes                    |               5 |            5 |
-| No           | Yes                   | No                     |             113 |           31 |
-| Yes          | No                    | No                     |              11 |            7 |
+| No           | Yes                   | No                     |             113 |           32 |
+| Yes          | No                    | No                     |              46 |           28 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              64 |           34 |
+| Yes          | Yes                   | No                     |              64 |           33 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,37 +73,37 @@ Table of Contents
 +------------------------+-------------------------------+--------------------------------+------------------+----------------+--------------+
 |      Clock Signal      |         Enable Signal         |        Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
 +------------------------+-------------------------------+--------------------------------+------------------+----------------+--------------+
-|  LEFT_IBUF_BUFG        |                               | Interrupter2/D2/q_reg_0        |                1 |              1 |         1.00 |
 |  CENTER_IBUF_BUFG      |                               | Interrupter3/D2/Interrupt3     |                1 |              1 |         1.00 |
+|  LEFT_IBUF_BUFG        |                               | Interrupter2/D2/q_reg_0        |                1 |              1 |         1.00 |
 |  DOWN_IBUF_BUFG        |                               | Interrupter5/D2/q_reg_0        |                1 |              1 |         1.00 |
 |  RIGHT_IBUF_BUFG       |                               | Interrupter4/D2/Interrupt4     |                1 |              1 |         1.00 |
 |  UP_IBUF_BUFG          |                               | Interrupter1/D2/Interrupt1     |                1 |              1 |         1.00 |
-|  FPGADigit/div/clk     |                               |                                |                2 |              3 |         1.50 |
+|  FPGADigit/div/clk     |                               |                                |                1 |              3 |         3.00 |
 |  CLK_IBUF_BUFG         |                               |                                |                3 |              5 |         1.67 |
-|  CLK_N_BUFG            |                               |                                |                3 |              9 |         3.00 |
-|  clk_wiz/inst/clk_out1 | vga_display/p_0_in            |                                |                7 |             11 |         1.57 |
-|  clk_wiz/inst/clk_out1 |                               |                                |                6 |             12 |         2.00 |
-|  clk_wiz/inst/clk_out1 |                               | vga_display/p_0_in             |                4 |             12 |         3.00 |
+|  CLK_N_BUFG            |                               |                                |                3 |              6 |         2.00 |
+|  clk_wiz/inst/clk_out1 | vga_display/p_0_in            |                                |                6 |             11 |         1.83 |
+|  clk_wiz/inst/clk_out1 |                               |                                |                7 |             12 |         1.71 |
+|  clk_wiz/inst/clk_out1 |                               | vga_display/p_0_in             |                5 |             12 |         2.40 |
 |  CLK_IBUF_BUFG         |                               | FPGADigit/div/clear            |                4 |             13 |         3.25 |
 |  CLK_IBUF_BUFG         |                               | divider4/counter[0]_i_1__3_n_0 |                5 |             19 |         3.80 |
 |  CLK_IBUF_BUFG         |                               | divider3/counter[0]_i_1__2_n_0 |                5 |             20 |         4.00 |
 |  CLK_IBUF_BUFG         |                               | divider2/counter[0]_i_1__1_n_0 |                6 |             23 |         3.83 |
 |  CLK_IBUF_BUFG         |                               | divider1/clear                 |                7 |             26 |         3.71 |
-|  CLK_N_BUFG            | PC/RAM_reg_0_31_0_0_i_2_0     |                                |               11 |             32 |         2.91 |
-|  CLK_N_BUFG            | PC/RAM_reg_0_127_7_7_i_2_0    |                                |               11 |             32 |         2.91 |
 |  CLK_N_BUFG            | PC/RAM_reg_0_31_0_0_i_2_1     |                                |               11 |             32 |         2.91 |
+|  CLK_N_BUFG            | PC/RAM_reg_0_127_7_7_i_2_0    |                                |               11 |             32 |         2.91 |
 |  CLK_N_BUFG            | PC/RAM_reg_0_127_7_7_i_1_13   |                                |               23 |             32 |         1.39 |
-|  CLK_N_BUFG            | Regfile/E[0]                  | RST_IBUF                       |               14 |             32 |         2.29 |
-|  CLK_N_BUFG            | Regfile/halt_OBUF_inst_i_6[0] | RST_IBUF                       |               20 |             32 |         1.60 |
-|  InterrEN_BUFG         |                               |                                |               20 |             32 |         1.60 |
+|  CLK_N_BUFG            | PC/RAM_reg_0_31_0_0_i_2_0     |                                |               11 |             32 |         2.91 |
+|  CLK_N_BUFG            | Regfile/E[0]                  | RST_IBUF                       |               19 |             32 |         1.68 |
+|  CLK_N_BUFG            | Regfile/halt_OBUF_inst_i_6[0] | RST_IBUF                       |               14 |             32 |         2.29 |
+|  CLK_N_BUFG            | Interrupter5/D2/InterrEN      |                                |               22 |             35 |         1.59 |
 |  CLK_N_BUFG            | Regfile/p_0_in__0             |                                |               11 |             88 |         8.00 |
 |  CLK_N_BUFG            | PC/RAM_reg_384_511_0_0_i_2_0  |                                |               32 |            128 |         4.00 |
-|  CLK_N_BUFG            | PC/RAM_reg_0_127_0_0_i_19_4   |                                |               32 |            128 |         4.00 |
-|  CLK_N_BUFG            | PC/RAM_reg_0_127_0_0_i_19_1   |                                |               32 |            128 |         4.00 |
-|  CLK_N_BUFG            | PC/RAM_reg_0_127_0_0_i_19_5   |                                |               32 |            128 |         4.00 |
 |  CLK_N_BUFG            | PC/RAM_reg_0_127_0_0_i_19_0   |                                |               32 |            128 |         4.00 |
-|  CLK_N_BUFG            | PC/RAM_reg_0_127_0_0_i_19_3   |                                |               32 |            128 |         4.00 |
+|  CLK_N_BUFG            | PC/RAM_reg_0_127_0_0_i_19_1   |                                |               32 |            128 |         4.00 |
 |  CLK_N_BUFG            | PC/RAM_reg_0_127_0_0_i_19_2   |                                |               32 |            128 |         4.00 |
+|  CLK_N_BUFG            | PC/RAM_reg_0_127_0_0_i_19_3   |                                |               32 |            128 |         4.00 |
+|  CLK_N_BUFG            | PC/RAM_reg_0_127_0_0_i_19_4   |                                |               32 |            128 |         4.00 |
+|  CLK_N_BUFG            | PC/RAM_reg_0_127_0_0_i_19_5   |                                |               32 |            128 |         4.00 |
 +------------------------+-------------------------------+--------------------------------+------------------+----------------+--------------+
 
 
